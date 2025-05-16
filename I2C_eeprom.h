@@ -68,6 +68,8 @@ public:
     */
   I2C_eeprom(const uint8_t deviceAddress, TwoWire *wire = &Wire);
 
+  I2C_eeprom();
+
   /**
     * Initializes the EEPROM for the given device address.
     *
@@ -78,6 +80,8 @@ public:
     * @param wire          Select alternative Wire interface
     */
   I2C_eeprom(const uint8_t deviceAddress, const uint32_t deviceSize, TwoWire *wire = &Wire);
+
+  void begin(const uint8_t deviceAddress, TwoWire *wire, uint32_t deviceSize, int8_t writeProtectPin);
 
   //  use default I2C pins.
   bool     begin(int8_t writeProtectPin = -1);

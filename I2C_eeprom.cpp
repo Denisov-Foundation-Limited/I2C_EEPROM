@@ -40,6 +40,17 @@ I2C_eeprom::I2C_eeprom(const uint8_t deviceAddress, TwoWire * wire) :
 {
 }
 
+I2C_eeprom::I2C_eeprom() {}
+
+void I2C_eeprom::begin(const uint8_t deviceAddress, TwoWire *wire, uint32_t deviceSize, int8_t writeProtectPin)
+{
+  _deviceAddress = deviceAddress;
+  _deviceSize = setDeviceSize(deviceSize);
+  _pageSize = getPageSize(_deviceSize);
+  _wire = wire;
+  begin(writeProtectPin);
+}
+
 
 I2C_eeprom::I2C_eeprom(const uint8_t deviceAddress, const uint32_t deviceSize, TwoWire * wire)
 {
